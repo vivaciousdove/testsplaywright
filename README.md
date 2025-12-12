@@ -1,135 +1,87 @@
-📄 README — CI Validation & Evidence
-Playwright CI Validation Checklist (All Met)
+# 🧪 Playwright CI UI Testing Project  
+## Cloud Status Dashboard — End-to-End UI Validation with Evidence
 
-This project demonstrates a production-ready Playwright CI pipeline with full execution evidence using GitHub Actions.
+---
 
-✅ 1. Tests Execute in CI (Headless)
+## 📌 Project Overview
 
-Evidence
+This project demonstrates a **production-grade UI testing pipeline** using **Playwright** and **GitHub Actions**, validating a cloud status dashboard that simulates AWS, Azure, and GCP service health.
 
-GitHub Actions → Actions → Playwright Tests
+The emphasis is not just on test execution, but on **verifiable proof**: HTML reports, trace replays, screenshots, and CI artifacts that reviewers can inspect.
 
-Latest workflow run shows:
+---
 
-Install Playwright Browsers
+## 🎯 Objectives
 
-Run Playwright tests
+- Validate critical UI elements across browsers
+- Run tests reliably in **CI (headless)**
+- Capture **actionable evidence**, not just pass/fail results
+- Demonstrate real-world QA workflow and discipline
 
-Green checkmarks for Chromium, Firefox, WebKit
+---
 
-Files
+## 🧰 Tools & Technologies
 
-.github/workflows/playwright.yml
+- **Playwright** (Chromium, Firefox, WebKit)
+- **TypeScript**
+- **GitHub Actions** (CI/CD)
+- **HTML Reporter**
+- **Trace Viewer**
+- **Screenshots & Video Capture**
 
-playwright.config.ts
+---
 
-Proof
+## 🧪 What Is Tested
 
-CI runs in ubuntu-latest
+### UI Validations
+- Dashboard page loads successfully
+- Cloud provider cards are present:
+  - AWS
+  - Azure
+  - GCP
+- Status indicators and timestamps render correctly
+- User interaction updates status check results
 
-Browsers execute in headless mode
+### Cross-Browser Coverage
+- Chromium
+- Firefox
+- WebKit (Safari equivalent)
 
-Tests pass consistently across engines
+---
 
-✅ 2. HTML Report Generated
+## ⚙️ CI Pipeline Design
 
-Evidence
+Every push to `main` triggers a GitHub Actions workflow that:
 
-GitHub Actions → Workflow run → Artifacts
+1. Installs dependencies and Playwright browsers  
+2. Executes tests in **headless mode**  
+3. Generates an **HTML report**  
+4. Captures **traces, screenshots, and videos**  
+5. Uploads artifacts **even if tests fail**
 
-Downloadable artifact:
+This ensures failures are **debuggable**, not silent.
 
-playwright-report
+---
 
-Files
+## ✅ CI Validation Checklist (All Met)
 
-playwright.config.ts → reporter: [['html', { open: 'never' }]]
+### ✔ Tests Execute in CI
+- GitHub Actions → **Actions → Playwright Tests**
+- Chromium, Firefox, and WebKit executed headlessly
 
-Proof
+### ✔ HTML Report Generated
+- Downloadable `playwright-report` artifact
+- Includes step-by-step execution details
 
-Report contains:
+### ✔ Trace, Screenshot, and Video Evidence
+- Trace viewer available per test
+- DOM snapshots, action timeline, and network activity visible
 
-Test list
+### ✔ Artifacts Always Uploaded
+- Reports uploaded using `if: always()` in workflow
+- Evidence preserved on both pass and fail
 
-Step-by-step execution
+---
 
-Browser-specific results
+## 📁 Evidence Stored in Repository
 
-✅ 3. Trace, Screenshot, and Video Evidence Captured
-
-Evidence
-
-HTML report → Test → View Trace
-
-Trace viewer shows:
-
-Actions timeline
-
-DOM snapshots
-
-Network activity
-
-Files
-
-playwright.config.ts
-
-trace: 'on',
-screenshot: 'only-on-failure',
-video: 'retain-on-failure',
-
-✅ 4. Artifacts Always Uploaded (Pass or Fail)
-
-Evidence
-
-GitHub Actions → Workflow YAML
-
-Artifact upload step uses:
-
-if: always()
-
-
-Proof
-
-Reports available even when tests fail
-
-Enables post-mortem analysis
-
-📁 Evidence Stored in Repo
-evidence/
-├── html-reports/
-│   ├── html-report-main-screen.png
-│   └── ui-validation.png
-├── traces/
-│   └── trace-viewer.png
-├── ui-screenshots/
-│   └── loaded-cloud-dashboard.png
-
-🧪 Test Coverage
-
-UI validation for:
-
-Page load
-
-Cloud provider cards (AWS, Azure, GCP)
-
-Status update behavior
-
-Cross-browser:
-
-Chromium
-
-Firefox
-
-WebKit
-
-📌 Summary
-
-This repository proves:
-
-CI-safe Playwright execution
-
-Reliable artifact generation
-
-Full UI validation with replayable evidence
-
-Production-grade debugging workflows
