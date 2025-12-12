@@ -1,4 +1,4 @@
-# 🧪 Playwright CI UI Testing Project  
+# 🧪 Playwright CI UI Testing Project
 ## Cloud Status Dashboard — End-to-End UI Validation with Evidence
 
 ---
@@ -22,18 +22,19 @@ The emphasis is not just on test execution, but on **verifiable proof**: HTML re
 
 ## 🧰 Tools & Technologies
 
-- **Playwright** (Chromium, Firefox, WebKit)
-- **TypeScript**
-- **GitHub Actions** (CI/CD)
-- **HTML Reporter**
-- **Trace Viewer**
-- **Screenshots & Video Capture**
+- Playwright (Chromium, Firefox, WebKit)
+- TypeScript
+- GitHub Actions (CI/CD)
+- HTML Reporter
+- Trace Viewer
+- Screenshots & Video Capture
 
 ---
 
 ## 🧪 What Is Tested
 
 ### UI Validations
+
 - Dashboard page loads successfully
 - Cloud provider cards are present:
   - AWS
@@ -43,6 +44,7 @@ The emphasis is not just on test execution, but on **verifiable proof**: HTML re
 - User interaction updates status check results
 
 ### Cross-Browser Coverage
+
 - Chromium
 - Firefox
 - WebKit (Safari equivalent)
@@ -53,11 +55,11 @@ The emphasis is not just on test execution, but on **verifiable proof**: HTML re
 
 Every push to `main` triggers a GitHub Actions workflow that:
 
-1. Installs dependencies and Playwright browsers  
-2. Executes tests in **headless mode**  
-3. Generates an **HTML report**  
-4. Captures **traces, screenshots, and videos**  
-5. Uploads artifacts **even if tests fail**
+- Installs dependencies and Playwright browsers
+- Executes tests in **headless mode**
+- Generates an **HTML report**
+- Captures **traces, screenshots, and videos**
+- Uploads artifacts **even if tests fail**
 
 This ensures failures are **debuggable**, not silent.
 
@@ -66,7 +68,7 @@ This ensures failures are **debuggable**, not silent.
 ## ✅ CI Validation Checklist (All Met)
 
 ### ✔ Tests Execute in CI
-- GitHub Actions → **Actions → Playwright Tests**
+- GitHub Actions → Actions → Playwright Tests
 - Chromium, Firefox, and WebKit executed headlessly
 
 ### ✔ HTML Report Generated
@@ -84,4 +86,3 @@ This ensures failures are **debuggable**, not silent.
 ---
 
 ## 📁 Evidence Stored in Repository
-
