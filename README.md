@@ -1,5 +1,5 @@
-
-Playwright CI Validation Checklist
+📄 README — CI Validation & Evidence
+Playwright CI Validation Checklist (All Met)
 
 This project demonstrates a production-ready Playwright CI pipeline with full execution evidence using GitHub Actions.
 
