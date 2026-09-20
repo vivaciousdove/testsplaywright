@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Cloud Status Dashboard', () => {
-
   test('loads dashboard and shows all three providers', async ({ page }) => {
     await page.goto('/cloud-status-dashboard/');
-    await page.waitForTimeout(3000); // 🔥 Pause for screenshots
 
     await expect(
       page.getByRole('heading', { name: 'Cloud Status Dashboard' })
@@ -15,19 +13,18 @@ test.describe('Cloud Status Dashboard', () => {
     await expect(page.getByText('GCP', { exact: true })).toBeVisible();
   });
 
-  test('Run Status Check updates last check and status badges', async ({ page }) => {
+  test('Run Status Check updates the last check timestamp', async ({ page }) => {
     await page.goto('/cloud-status-dashboard/');
-    await page.waitForTimeout(3000); // 🔥 Pause for screenshots
 
     const runButton = page.getByRole('button', { name: /run status check/i });
     const lastCheckText = page.getByText(/Last check:/i);
 
+    // Capture the timestamp before running a new status check.
     const before = await lastCheckText.textContent();
 
     await runButton.click();
 
-    await expect(lastCheckText).not.toHaveText(before);
+    // The displayed timestamp should change after the status check runs.
+    await expect(lastCheckText).not.toHaveText(before ?? '');
   });
-
 });
-

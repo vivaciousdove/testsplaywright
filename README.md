@@ -1,111 +1,68 @@
 [![Playwright Tests](https://github.com/vivaciousdove/testsplaywright/actions/workflows/playwright.yml/badge.svg)](https://github.com/vivaciousdove/testsplaywright/actions)
 
-# 🧪 Playwright CI UI Testing — Cloud Status Dashboard
+# Playwright Cloud Status Dashboard Tests
 
-**TL;DR**
-- Playwright UI tests running **headlessly in CI**
-- **Cross-browser** coverage: Chromium, Firefox, WebKit
-- **Evidence-first**: HTML report, traces, screenshots, videos
-- GitHub Actions pipeline with **always-uploaded artifacts**
+A small Playwright project I built to practice UI automation, cross-browser testing, and running automated tests through GitHub Actions.
 
----
+The tests run against a live Cloud Status Dashboard hosted on GitHub Pages.
 
-## 📌 Project Overview
-This repository demonstrates a **production-style UI automation pipeline** using **Playwright** (Microsoft, 2020) and **GitHub Actions** (GitHub CI/CD platform).
+## What It Tests
 
-The system under test is a deterministic **Cloud Status Dashboard** designed for repeatable validation.
+The suite currently checks that:
 
-The focus is not just passing tests — **it’s verifiable proof reviewers can inspect.**
+- The dashboard loads successfully
+- AWS, Azure, and GCP are displayed
+- Running a status check updates the last-check timestamp
 
-Sources  
-Playwright: https://en.wikipedia.org/wiki/Playwright_(software)  
-GitHub Actions: https://docs.github.com/actions
+Each scenario runs in:
 
----
+- Chromium
+- Firefox
+- WebKit
 
-## 🎯 What This Proves
-- Tests run reliably in CI  
-- Evidence captured on pass **and** fail  
-- Cross-browser risk understood  
-- QA treated as a **delivery system**
+That gives the current suite **6 test executions across 3 browsers**.
 
----
+## Tools
 
-## 🧰 Stack
-- **Playwright** — browser automation
-::contentReference[oaicite:0]{index=0}
- + assertions  
-- **TypeScript** — typed test code  
-- **GitHub Actions** — CI execution  
-- **HTML Reporter** — human-readable report  
-- **Trace Viewer** — step-by-step replay
+- **Playwright** — UI automation and assertions
+- **TypeScript** — test code
+- **GitHub Actions** — automated test execution
+- **GitHub Pages** — hosts the application being tested
 
----
+## CI
 
-## 🧪 Test Coverage
-- Page load validation  
-- Cloud provider cards (AWS/Azure/GCP)  
-- Status indicators + timestamps  
-- User interaction and UI updates  
-- Cross-browser consistency
+GitHub Actions runs the Playwright suite on:
 
----
+- Push to `main`
+- Pull requests into `main`
+- Manual workflow runs
 
-## ⚙️ CI Pipeline Contract
+The workflow installs the dependencies and Playwright browsers, runs the cross-browser tests, and uploads the Playwright report and test results.
 
-**Triggers**
-- Runs on push to `main`
+Failure evidence can include screenshots, videos, and traces based on the Playwright configuration.
 
-**Pipeline Steps**
-1. Install dependencies + browsers  
-2. Execute tests headlessly across browsers  
-3. Generate HTML report  
-4. Capture traces, screenshots, videos  
-5. Upload artifacts **even if tests fail**
+## Test Evidence
 
-**Artifacts Produced**
-- `playwright-report/`
-- `test-results/`
-- traces/videos/screenshots
+The repository includes a few sample screenshots under `evidence/`.
 
----
+GitHub Actions also keeps the Playwright report and test results as workflow artifacts so failed runs can be investigated without relying only on console output.
 
-## 📍 Where to See Proof (2 Clicks)
-
-1. Actions → Playwright Tests → latest run  
-2. Download **playwright-report** artifact  
-3. Open `index.html` locally
-
----
-
-## 🖼️ CI Run Example
-
-Example successful GitHub Actions run producing Playwright artifacts:
-
-![Playwright CI Run](./evidence/ui-screenshots/ci-run-success.png)
-
-
-
-
----
-
-## 📁 Repo Evidence (Static Samples)
-
-- `evidence/html-reports`
-- `evidence/traces`
-- `evidence/ui-screenshots`
-
----
-
-## 🔗 System Under Test
-https://vivaciousdove.github.io/cloud-status-dashboard/
-
----
-
-## 🧑‍💻 Run Locally
+## Run Locally
 
 ```bash
 npm ci
 npx playwright install --with-deps
 npx playwright test
+```
+
+Open the latest HTML report with:
+
+```bash
 npx playwright show-report
+```
+
+## System Under Test
+
+The automated tests run against the live Cloud Status Dashboard:
+
+https://vivaciousdove.github.io/cloud-status-dashboard/
